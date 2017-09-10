@@ -1,0 +1,19 @@
+{
+  "name": "e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test.js --reporter mochawesome"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^3.5.0"
+  },
+  "dependencies": {
+    "chromedriver": "^2.32.2",
+    "mochawesome": "^2.3.0",
+    "selenium-webdriver": "^3.5.0"
+  }
+}

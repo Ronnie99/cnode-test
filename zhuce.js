@@ -1,17 +1,16 @@
 require('chromedriver');
+let webdriver = require('selenium-webdriver');
+let driver = new webdriver.Builder().forBrowser('chrome').build();
+let By = webdriver.By;
+let fs = require('fs')
+let user = new Date().valueOf();
 describe('cnode注册登录测试', function(){
-    this.timeout(60*1000);
-    let webdriver = require('selenium-webdriver');
-    let driver = new webdriver.Builder().forBrowser('chrome').build();
-    let By = webdriver.By;
-    let fs = require('fs')
-    let user = new Date().valueOf();
     after( function(){
         driver.takeScreenshot().then(function(imagedata){
-            fs.writeFileSync('jietu/'+ user + '.png',imagedata,'base64')
+        fs.writeFileSync('jietu/'+ user + '.png',imagedata,'base64')
         });
-        driver.quit();
     });
+    this.timeout(60*1000);
     describe('用例1：正常注册',function(){
         it('打开注册界面',async function(){
             await driver.get('http://192.168.21.128:3000/signup')

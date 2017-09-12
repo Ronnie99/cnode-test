@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "zhuce": "./node_modules/.bin/mocha zhuce.js --reporter mochawesome"
+    "topic": "./node_modules/.bin/mocha topic.js --reporter mochawesome"
   },
   "author": "",
   "license": "ISC",

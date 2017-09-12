@@ -2,12 +2,20 @@ require('chromedriver');
 let webdriver = require('selenium-webdriver');
 let driver = new webdriver.Builder().forBrowser('chrome').build();
 let By = webdriver.By;
-describe('测试登录功能',function(){
+let fs = require('fs');
+let user = new Date().valueOf();
+describe('登录',function(){
+    this.timeout(60000);
     before(async function(){
         await driver.get('http://192.168.21.128:3000/signin');
         await driver.findElement(By.id('name')).sendKeys('ronnie');
         await driver.findElement(By.id('pass')).sendKeys('123456');
         await driver.findElement(By.className('span-primary')).click();
+    });
+    after(async function(){
+        await driver.takeScreenshot().then(function(imagedata){
+            fs.writeFileSync('/jietu' + user +'.png',imagedata,'base64')
+        })
     });
     describe('用例1：发布分享话题',function(){
         it('点击发布话题按钮',async function(){

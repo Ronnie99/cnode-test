@@ -2,10 +2,10 @@ require('chromedriver');
 let webdriver = require('selenium-webdriver');
 let driver = new webdriver.Builder().forBrowser('chrome').build();
 let By = webdriver.By;
-let fs = require('fs')
-let user = new Date().valueOf();
 describe('cnode注册登录测试', function(){
     after( function(){
+        let fs = require('fs')
+        let user = new Date().valueOf();
         driver.takeScreenshot().then(function(imagedata){
         fs.writeFileSync('jietu/'+ user + '.png',imagedata,'base64')
         });

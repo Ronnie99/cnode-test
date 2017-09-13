@@ -1,81 +1,19 @@
 require('chromedriver');
-describe('cnode注册登录测试', function(){
-    this.timeout(60*1000)
-    let webdriver = require('selenium-webdriver');
-    let driver = new webdriver.Builder().forBrowser('chrome').build();
-    let By = webdriver.By;
-    let fs = require('fs')
-    let user = new Date().valueOf()
-    after( function(){
-        driver.takeScreenshot().then(function(imagedata){
-            fs.writeFileSync(user+'.png',imagedata,'base64')
-
-        });
-        driver.quit();
-    });
-    describe('用例1：正常注册',function(){
-        it('打开注册界面',async function(){
-            await driver.get('http://192.168.21.128:3000/signup')
-        });
-        it('输入用户名',async function(){
-            await driver.findElement(By.id('loginname')).sendKeys('nihao')
-        });
-        it('输入密码',async function(){
-            await driver.findElement(By.id('pass')).sendKeys('123456')
-        });
-        it('确认密码',async function(){
-            await driver.findElement(By.id('re_pass')).sendKeys('123456')
-        });
-        it('点击注册按钮',async function(){
-            await driver.findElement(By.className('span-primary')).click()
-        });
-    });
-    describe('用例2：两次密码不一致',function(){
-        it('打开注册界面',async function(){
-            await driver.get('http://192.168.21.128:3000/signup')
-        });
-        it('输入用户名',async function(){
-            await driver.findElement(By.id('loginname')).sendKeys('nihao1')
-        });
-        it('输入密码',async function(){
-            await driver.findElement(By.id('pass')).sendKeys('123456')
-        });
-        it('确认密码',async function(){
-            await driver.findElement(By.id('re_pass')).sendKeys('12345')
-        });
-        it('点击注册按钮',async function(){
-            await driver.findElement(By.className('span-primary')).click()
-        });
-    });
-    describe('用例3：用户名为空注册',function(){
-        it('打开注册界面',async function(){
-            await driver.get('http://192.168.21.128:3000/signup')
-        });
-        it('输入密码',async function(){
-            await driver.findElement(By.id('pass')).sendKeys('123456')
-        });
-        it('确认密码',async function(){
-            await driver.findElement(By.id('re_pass')).sendKeys('123456')
-        });
-        it('点击注册按钮',async function(){
-            await driver.findElement(By.className('span-primary')).click()
-        });
-    });
-    describe('用例4：用户名含有特殊字符',function(){
-        it('打开注册界面',async function(){
-            await driver.get('http://192.168.21.128:3000/signup')
-        });
-        it('输入用户名',async function(){
-            await driver.findElement(By.id('loginname')).sendKeys('nihao~！@')
-        });
-        it('输入密码',async function(){
-            await driver.findElement(By.id('pass')).sendKeys('123456')
-        });
-        it('确认密码',async function(){
-            await driver.findElement(By.id('re_pass')).sendKeys('123456')
-        });
-        it('点击注册按钮',async function(){
-            await driver.findElement(By.className('span-primary')).click()
-        });
-    });
-});
+let webdriver = require('selenium-webdriver');
+let driver = new webdriver.Builder().forBrowser('chrome').build()
+let By  = webdriver.By;
+driver = new webdriver.Builder().forBrowser('chrome').build();
+driver.get('http://192.168.21.128:3000/signin');
+driver.sleep(8000)
+driver.findElement(By.id('name')).sendKeys('ronnie');
+driver.findElement(By.id('pass')).sendKeys('123456');
+driver.findElement(By.className('span-primary')).click();
+driver.findElement(By.id('create_topic_btn')).click();
+driver.findElement(By.id('tab-value')).click();
+driver.findElement(By.xpath('//*[@id="tab-value"]/option[2]')).click();
+driver.findElement(By.id('title')).sendKeys('黑泽明')
+driver.findElement(By.className('eicon-link')).click()
+driver.sleep(5000)
+driver.findElement(By.xpath('/html/body/div[4]/div[2]/form/div[1]/div/input')).sendKeys('hello,world')
+driver.findElement(By.xpath('/html/body/div[4]/div[2]/form/div[2]/div/input')).clear()
+driver.findElement(By.xpath('/html/body/div[4]/div[2]/form/div[2]/div/input')).sendKeys('http://192.168.21.128:3000/signin')

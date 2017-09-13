@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "topic": "./node_modules/.bin/mocha topic.js --reporter mochawesome"
+    "lianjie": "./node_modules/.bin/mocha lianjie.js --reporter mochawesome"
   },
   "author": "",
   "license": "ISC",

@@ -3,11 +3,11 @@ let webdriver = require('selenium-webdriver');
 let driver = new webdriver.Builder().forBrowser('chrome').build();
 let By = webdriver.By;
 describe('cnode注册登录测试', function(){
-    after( function(){
+    after(async function(){
         let fs = require('fs')
         let user = new Date().valueOf();
-        driver.takeScreenshot().then(function(imagedata){
-        fs.writeFileSync('jietu/'+ user + '.png',imagedata,'base64')
+        await driver.takeScreenshot().then(function(imagedata){
+            fs.writeFileSync('jietu/'+ user + '.png',imagedata,'base64')
         });
     });
     this.timeout(60*1000);

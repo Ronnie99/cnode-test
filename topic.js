@@ -3,7 +3,6 @@ let webdriver = require('selenium-webdriver');
 let driver = new webdriver.Builder().forBrowser('chrome').build();
 let By = webdriver.By;
 let fs = require('fs');
-let user = new Date().valueOf();
 describe('登录',function(){
     this.timeout(60000);
     before(async function(){
@@ -13,9 +12,11 @@ describe('登录',function(){
         await driver.findElement(By.className('span-primary')).click();
     });
     after(async function(){
+    let user = new Date().valueOf();
         await driver.takeScreenshot().then(function(imagedata){
             fs.writeFileSync('/jietu' + user +'.png',imagedata,'base64')
         })
+        await driver.quit()
     });
     describe('用例1：发布分享话题',function(){
         it('点击发布话题按钮',async function(){

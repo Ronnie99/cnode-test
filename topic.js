@@ -25,7 +25,7 @@ describe('登录', function () {
     describe('用例1：发布分享话题', function () {
         before(async function () {
             driver = new webdriver.Builder().forBrowser('chrome').build();
-            await driver.get('http://192.162.21.128:3000/signin');
+            await driver.get('http://192.168.21.128:3000/signin');
             await driver.findElement(By.id('name')).sendKeys('ronnie');
             await driver.findElement(By.id('pass')).sendKeys('123456');
             await driver.findElement(By.className('span-primary')).click();
@@ -53,6 +53,9 @@ describe('登录', function () {
             await driver.findElement(By.className('CodeMirror-scroll')).click();
             await driver.actions().mouseMove(driver.findElement(By.className('CodeMirror-scroll'))).sendKeys('他不姓黑，不怕黑，选了光').perform();
         });
+        it('点击提交',async function(){
+            await driver.findElement(By.className('span-primary submit_btn')).click()
+        })
     });
     describe('用例1：发布分享话题', function () {
         before(async function () {
@@ -79,11 +82,14 @@ describe('登录', function () {
             await driver.findElement(By.xpath('//*[@id="tab-value"]/option[3]')).click();
         });
         it('输入标题', async function () {
-            await driver.findElement(By.id('title')).sendKeys('她')
+            await driver.findElement(By.id('title')).sendKeys('你我皆凡人')
         });
         it('点击输入框输入内容', async function () {
             await driver.findElement(By.className('CodeMirror-scroll')).click();
-            await driver.actions().mouseMove(driver.findElement(By.className('CodeMirror-scroll'))).sendKeys('他放假也一个人放').perform();
+            await driver.actions().mouseMove(driver.findElement(By.className('CodeMirror-scroll'))).sendKeys('因为有了你，人生旅途不再冷清').perform();
         });
+        it('点击提交',async function(){
+            await driver.findElement(By.className('span-primary submit_btn')).click()
+        })
     });
 });

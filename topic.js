@@ -22,6 +22,7 @@ function getRootPath() {
 describe('登录', function () {
     this.timeout(60000);
 
+
     describe('用例1：发布分享话题', function () {
         before(async function () {
             driver = new webdriver.Builder().forBrowser('chrome').build();
@@ -90,6 +91,6 @@ describe('登录', function () {
         });
         it('点击提交',async function(){
             await driver.findElement(By.className('span-primary submit_btn')).click()
-        })
+        });
     });
 });

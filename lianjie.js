@@ -11,6 +11,7 @@ describe('链接测试',function(){
             driver = new webdriver.Builder().forBrowser('chrome').build();
             await driver.get('http://192.168.21.128:3000/signin');
             await driver.findElement(By.id('name')).sendKeys('ronnie');
+            await driver.findElement
             await driver.findElement(By.id('pass')).sendKeys('123456');
             await driver.findElement(By.className('span-primary')).click();
         });
